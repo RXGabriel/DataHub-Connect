@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import {User} from '../models/User'
 import { Product } from '../models/Product';
+import { Op } from 'sequelize';
 
 export const home = async (req: Request, res: Response)=>{
     let users = await User.findAll();
@@ -23,4 +24,19 @@ export const home = async (req: Request, res: Response)=>{
         frasesDoDia: [],
         users
     });
-};
+}
+export const novoUsuario = async (req: Request, res: Response) => {
+    let { name, age } = req.body;
+
+    if(name) {
+        const newUser = User.build({ name });
+
+        if(age) {
+            newUser.age = parseInt(age);
+        }
+
+        await newUser.save();
+    }
+
+    res.redirect('/');
+}

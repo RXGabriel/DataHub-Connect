@@ -1,12 +1,13 @@
 import { Router } from 'express';
 
-import * as HomeController from '../controllers/homeController';
-import * as InfoController from '../controllers/infoCotroller';
-import * as UserController from '../controllers/userController';
+import * as HomeController from '../controllers/HomeController';
+import * as InfoController from '../controllers/InfoCotroller';
+import * as UserController from '../controllers/UserController';
 
 const router = Router();
 
 router.get('/', HomeController.home);
+router.post('/novousuario',HomeController.novoUsuario);
 
 router.get('/contato', InfoController.contato);
 router.get('/sobre', InfoController.sobre);
