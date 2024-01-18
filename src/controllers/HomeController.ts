@@ -4,13 +4,6 @@ import { Product } from '../models/Product';
 import { Op } from 'sequelize';
 
 export const home = async (req: Request, res: Response)=>{
-    let results = await User.findAll({where: {name: 'Galo'}})
-    if(results.length > 0) {
-        let user = results[0];
-        
-        await user.destroy()
-    }
-
     let users = await User.findAll();
     let age: number = 90;
     let showOld: boolean = false;
