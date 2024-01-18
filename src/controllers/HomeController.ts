@@ -4,6 +4,8 @@ import { Product } from '../models/Product';
 import { Op } from 'sequelize';
 
 export const home = async (req: Request, res: Response)=>{
+    await User.create({ name: 'Diego', age:12 });
+
     let users = await User.findAll();
     let age: number = 90;
     let showOld: boolean = false;
